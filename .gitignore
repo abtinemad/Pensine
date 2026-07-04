@@ -1,0 +1,9 @@
+# Données personnelles — NE JAMAIS versionner ni partager.
+# Ces fichiers contiennent la vie privée de l'utilisateur (santé, finances, projets).
+# Ils vivent dans le dossier pour que les tâches les lisent, mais restent hors du dépôt.
+pensine.md
+pensine-brute.md
+pensine-conventions.md
+
+# Système
+.DS_Store
