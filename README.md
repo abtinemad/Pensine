@@ -40,7 +40,8 @@ Fichiers (dans le dossier de travail de l'utilisateur) :
 |---|---|
 | `pensine-brute.md` | Matière première. Notes verbatim, datées, append-only. Jamais réécrite ni supprimée. |
 | `pensine.md` | Version nette. Synthèse par thèmes + les trois registres + journal des briefings + archives. |
-| `pensine-conventions.md` | Couche de règles évolutives lue par les tâches à chaque run. Éditable librement. |
+| `pensine-conventions.md` | Couche de règles évolutives lue par les tâches à chaque run. **Privée** (contient des valeurs personnelles) : exclue du dépôt via `.gitignore`, vit uniquement en local. |
+| `pensine-conventions.example.md` | Squelette public de la couche conventions : mêmes règles, valeurs personnelles remplacées par des placeholders. C'est la version versionnée et partageable. |
 | `README.md` | Ce document : principes et journal des évolutions. |
 
 Tâches planifiées :
@@ -64,7 +65,7 @@ Tâches planifiées :
 
 Ce qui est **personnel** et doit être changé : l'adresse email, les chemins de fichiers, les connecteurs branchés (Calendar, Gmail), le fuseau horaire, la langue, et bien sûr le contenu de la pensine. Ce qui est **réutilisable tel quel** : les principes, la structure des fichiers, les prompts des deux tâches, la couche de conventions.
 
-Pour partager : ne partage jamais tes fichiers de données (`pensine.md`, `pensine-brute.md`) — ils contiennent ta vie. Partage le **squelette** : ce README, les prompts des tâches, et des versions vides de la pensine et des conventions. Voir la section GitHub ci-dessous quand elle existera.
+Pour partager : ne partage jamais tes fichiers privés (`pensine.md`, `pensine-brute.md`, `pensine-conventions.md`) — ils contiennent ta vie et tes valeurs. Le dépôt git ne versionne QUE le **squelette** : ce README, les prompts des tâches (génériques, sans email ni chemins nominatifs), le `.gitignore`, et `pensine-conventions.example.md`. C'est exactement ce squelette qu'on peut donner à quelqu'un d'autre.
 
 ## Limites connues
 
@@ -75,6 +76,16 @@ Les tâches planifiées ne tournent que lorsque l'app est ouverte ; si elle est 
 ## Journal des évolutions
 
 <!-- Le plus récent en haut. Format : ### YYYY-MM-DD — titre, puis quelques lignes. -->
+
+### 2026-07-04 — Durcissement : git, anonymisation, priorisation, carte
+
+Deuxième vague le même jour, après la naissance du système :
+- **Sécurité git.** Mise sous dépôt privé GitHub. Token sorti de `.git/config` (fuite locale évitée), authentification via le trousseau macOS (osxkeychain) — plus aucun secret en clair. Le push depuis l'environnement de l'assistant n'est plus possible : modèle acté « l'assistant édite et commit, l'utilisateur pousse » (commande d'une ligne, sans clé à saisir).
+- **Anonymisation + purge d'historique.** Historique git réinitialisé (un seul commit propre) pour effacer les valeurs personnelles déjà poussées. Prompts des tâches neutralisés (« l'utilisateur », chemins en `~/`), email et nom d'utilisateur retirés des fichiers versionnés.
+- **Conventions privatisées.** `pensine-conventions.md` exclu du dépôt (la consolidation y réécrit chaque semaine des valeurs sensibles) ; squelette public `pensine-conventions.example.md` versionné à la place.
+- **Priorisation du focus à deux niveaux.** Bande URGENTE pilotée par les dates (court-circuite tout), puis le reste classé par catégories déduites de la brute. Leviers manuels `pinned`/`frozen`, poids modifiables.
+- **Carte pensine enrichie dans le briefing.** Le widget de fin de briefing devient une carte à deux actions : verser une note, ou préparer la commande de sauvegarde GitHub.
+- Règle de format ajoutée : pas de bloc `<run-summary>` dans la sortie.
 
 ### 2026-07-04 — Naissance du système
 
